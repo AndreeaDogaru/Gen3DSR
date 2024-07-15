@@ -1,0 +1,10 @@
+-f https://download.openmmlab.com/mmcv/dist/cu121/torch2.1.0/index.html
+
+torch==2.1.2
+torchvision
+mmengine==0.10.2
+mmcv==2.1.0
+mmdet==3.3.0
+ftfy
+timm
+regex
