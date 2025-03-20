@@ -6,4 +6,4 @@ venv_*/
 .vs/
 .vscode/
 .idea/
-
+.out/

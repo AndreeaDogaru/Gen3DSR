@@ -1,0 +1,27 @@
+scene:
+  type: 'InTheWild'
+  attributes:
+    img_path: '../imgs/demo_1.jpg'
+    K: [[2865.63, 0.0, 1845.11], [0.0, 2865.63, 1392.02], [0.0, 0.0, 1.0]]
+  save_dir: '../out/demo_1'
+run:
+  only_foreground: False 
+  single_object: False  # False [compositional reconstruction], True [all instances are reconstructed as one]
+  reproject: True # True [pixels are reprojected before instance reconstruction], False [direct cropping of instance, ablation of reprojection]
+  depth_edge_threshold: 0.0001
+  amodal_completion: 'our'  # options: 'our', null [ablation of amodal completion]
+  obj_rec: 'dg'   # options: 'dg'
+  depth:
+    metric: 'metric3d'   # options: 'gt', 'gt_ss', 'depthanything', 'metric3d'
+    relative: null # options: 'marigold', 'metric3d', null
+  segmentation:
+    holistic: 'entityv2'
+    fg_bg: 'clipseg' # options: 'gt', 'oneformer', 'clipseg', 'largest'
+    merge_masks: # merge small masks with larger neighboring masks 
+      dilation: 7
+      threshold: 0.5
+    tagger: 'ovsam' # options: 'ovsam', null
+  calibration:
+    intrinsics: 'gt'  # options: 'gt', 'perspectivefields'
+    pose: null  # options: 'gt', null
+  clip_bg: False # True [parts of the reconstructed instaces that intersect the background mesh are trimmed]

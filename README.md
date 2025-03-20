@@ -14,9 +14,9 @@ This repository contains the official implementation of the paper titled *Genera
 
 ## 📢 News
 
+06.11.2024: Gen3DSR is accepted at 3DV2025! <br>
 15.07.2024: Inference code is released. <br>
 04.04.2024: Paper is available on <a href="https://arxiv.org/pdf/2404.03421"><img src="https://img.shields.io/badge/arXiv-PDF-b31b1b" height="16"></a>. 
-
 
 ## 🎮 Usage
 - Interactive scene reconstruction examples can be found on our [project page](https://andreeadogaru.github.io/Gen3DSR/). 
@@ -42,11 +42,11 @@ python run.py --config ./configs/image.yaml \
 
 ## 🎓 Citation
 ```
-@article{Dogaru2024Gen3DSR,
+@inproceedings{Ardelean2025Gen3DSR,
     title={Generalizable 3D Scene Reconstruction via Divide and Conquer from a Single View},
-    author={Dogaru, Andreea and Özer, Mert and Egger, Bernhard},
-    journal={arXiv:2404.03421},
-    year={2024}
+    author={Ardelean, Andreea and Özer, Mert and Egger, Bernhard},
+    booktitle = {International Conference on 3D Vision (3DV)},
+    year={2025}
 }
 ```
 
