@@ -1,0 +1,27 @@
+scene:
+  type: 'Front3D'
+  attributes:
+    data_root: '../imgs/FRONT3D'
+    render_task: '3084'
+  save_dir: ../out/front3d/rec_${.attributes.render_task}
+run:
+  only_foreground: False 
+  single_object: False  # False [compositional reconstruction], True [all instances are reconstructed as one]
+  reproject: True # True [pixels are reprojected before instance reconstruction], False [direct cropping of instance, ablation of reprojection]
+  depth_edge_threshold: 0.0001
+  amodal_completion: 'our'  # options: 'our', null [ablation of amodal completion]
+  obj_rec: 'dg'   # options: 'dg'
+  depth:
+    metric: 'gt_ss'   # options: 'gt', 'gt_ss', 'depthanything', 'metric3d'
+    relative: 'metric3d' # options: 'marigold', 'metric3d', null
+  segmentation:
+    holistic: 'entityv2'
+    fg_bg: 'oneformer' # options: 'gt', 'oneformer', 'clipseg', 'largest'
+    merge_masks: # merge small masks with larger neighboring masks 
+      dilation: 7
+      threshold: 0.5
+    tagger: 'ovsam' # options: 'ovsam', null
+  calibration:
+    intrinsics: 'gt'  # options: 'gt', 'perspectivefields'
+    pose: null  # options: 'gt', null
+  clip_bg: True # True [parts of the reconstructed instaces that intersect the background mesh are trimmed]

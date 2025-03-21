@@ -1,19 +1,19 @@
 # Gen3DSR: Generalizable 3D Scene Reconstruction via Divide and Conquer from a Single View
 
-This repository contains the official implementation of the paper titled *Generalizable 3D Scene Reconstruction via Divide and Conquer from a Single View*.
+This repository contains the official implementation of the 3DV2025 paper titled *Generalizable 3D Scene Reconstruction via Divide and Conquer from a Single View*.
 
 [![Website](https://img.shields.io/badge/Project-Page-b361ff
 )](https://andreeadogaru.github.io/Gen3DSR/)
 [![Paper](https://img.shields.io/badge/arXiv-PDF-b31b1b)](https://arxiv.org/pdf/2404.03421)
 
-[Andreea Dogaru](https://andreeadogaru.github.io/),
+[Andreea Ardelean](https://andreeadogaru.github.io/),
 [Mert Özer](),
 [Bernhard Egger](https://eggerbernhard.ch/)
 
 ![results](teaser.png)
 
 ## 📢 News
-
+21.03.2025: Evaluation code is released. <br>
 06.11.2024: Gen3DSR is accepted at 3DV2025! <br>
 15.07.2024: Inference code is released. <br>
 04.04.2024: Paper is available on <a href="https://arxiv.org/pdf/2404.03421"><img src="https://img.shields.io/badge/arXiv-PDF-b31b1b" height="16"></a>. 
@@ -40,6 +40,26 @@ python run.py --config ./configs/image.yaml \
 - The reconstruction can be found in `<scene.save_dir>/reconstruction`.
 - The code requires minimum 20GB of VRAM.
 
+## 📋 Evaluation
+We provide here the information required to evaluate Gen3DSR on the subset of 100 scenes selected from the [3D-FRONT](https://tianchi.aliyun.com/specials/promotion/alibaba-3d-scene-dataset) dataset as in our paper. 
+- Downloading the data:
+```bash
+cd imgs
+git lfs install
+git clone https://huggingface.co/datasets/andreead-a/FRONT3D
+```
+- Running the method on a given scene: 
+```bash
+cd src
+python run.py --config ./configs/front.yaml scene.attributes.render_task='5131' 
+```
+- The reconstruction can be found in `out/front3d/rec_<scene.attributes.render_task>`
+- A script is provided to evaluate all reconstructed scenes against the ground truth:
+```bash
+cd src
+python eval_front.py --data_root ../imgs/FRONT3D --rec_path ../out/front3d
+```
+- The results will be saved at `out/front3d/metrics_full.json`
 ## 🎓 Citation
 ```
 @inproceedings{Ardelean2025Gen3DSR,
